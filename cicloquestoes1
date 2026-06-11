@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Estudos · Lana Biatriz · Ciclo em Blocos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1a1a1e; --mut:#6f6e76; --line:#e8e6e0;
+  --accent:#4f46e5; --soft:#f1f0fb;
+  --r:18px; --sh:0 1px 2px rgba(20,20,30,.05),0 8px 24px -12px rgba(20,20,30,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding:48px 20px 80px}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:inherit;text-decoration:none}
+/* ---------- hero ---------- */
+.hero{margin-bottom:40px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--soft);padding:7px 14px;border-radius:999px;margin-bottom:18px}
+.kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,46px);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+h1 em{font-style:normal;color:var(--accent)}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:var(--sh)}
+.chip span{color:var(--mut);font-weight:500}
+/* ---------- section titles ---------- */
+.sec{margin-top:52px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+h2{font-family:'Fraunces',serif;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.sec-head small{font-size:13px;color:var(--mut);font-weight:500}
+/* ---------- week grid ---------- */
+.week{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.day-name{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding:2px 2px 6px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.day-name i{font-style:normal;font-size:10px;font-weight:700;color:#b3b1ba}
+.act{--c:#4f46e5;--cbg:#eef2ff;display:block;border-radius:14px;padding:11px 12px;background:var(--cbg);border:1px solid color-mix(in srgb,var(--c) 14%,transparent);position:relative;transition:transform .15s ease, box-shadow .15s ease}
+.act:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px color-mix(in srgb,var(--c) 45%,transparent)}
+.act .tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+.act .tag::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--c)}
+.act b{display:block;font-size:13px;font-weight:700;line-height:1.25;color:var(--ink)}
+.act small{display:block;font-size:11px;color:var(--mut);margin-top:4px;font-weight:500}
+.act .go{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--card);color:var(--c);display:grid;place-items:center;font-size:11px;font-weight:800;box-shadow:0 1px 3px rgba(0,0,0,.12);opacity:.85}
+.hourlab{font-size:10px;font-weight:700;color:#b3b1ba;letter-spacing:.08em;text-transform:uppercase}
+/* ---------- rule banner ---------- */
+.rulebar{margin-top:16px;background:linear-gradient(135deg,#1a1a2e,#2d2a55);color:#eceaff;border-radius:var(--r);padding:18px 22px;font-size:14px;font-weight:500;display:flex;gap:14px;align-items:center;box-shadow:var(--sh)}
+.rulebar .ic{flex:0 0 38px;height:38px;border-radius:12px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:17px}
+.rulebar b{color:#fff}
+/* ---------- two-col ---------- */
+.cols{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px}
+.card h3{font-family:'Fraunces',serif;font-size:18px;margin-bottom:14px}
+.bar-row{display:grid;grid-template-columns:1fr 44px;gap:10px;align-items:center;padding:7px 0}
+.bar-row+.bar-row{border-top:1px dashed var(--line)}
+.bar-lab{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:3px;flex:0 0 10px}
+.bar-h{font-size:13px;font-weight:800;text-align:right;color:var(--mut)}
+.bar-track{grid-column:1/-1;height:5px;border-radius:99px;background:#f0efe9;overflow:hidden;margin-top:-2px}
+.bar-fill{height:100%;border-radius:99px}
+.tot{display:flex;gap:10px;margin-top:16px}
+.tot div{flex:1;background:var(--bg);border-radius:14px;padding:12px;text-align:center}
+.tot b{display:block;font-size:20px;font-weight:800}
+.tot span{font-size:11px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.prio{display:flex;flex-direction:column;gap:10px}
+.prio a,.prio .p{display:flex;gap:14px;align-items:center;background:var(--bg);border-radius:14px;padding:13px 15px;transition:background .15s}
+.prio a:hover{background:var(--soft)}
+.prio .n{flex:0 0 30px;height:30px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}
+.prio b{font-size:13.5px;display:block}
+.prio small{font-size:11.5px;color:var(--mut)}
+/* ---------- frentes ---------- */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+.fcard{--c:#4f46e5;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:var(--r);box-shadow:var(--sh);padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.fcard .ft{display:flex;align-items:center;gap:10px}
+.fcard .av{width:34px;height:34px;border-radius:11px;background:color-mix(in srgb,var(--c) 12%,white);color:var(--c);display:grid;place-items:center;font-weight:800;font-size:13px}
+.fcard h4{font-size:15px;font-weight:700;flex:1;line-height:1.2}
+.fcard .fr{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--mut);text-transform:uppercase}
+.fcard p{font-size:12px;color:var(--mut);line-height:1.6}
+.btns{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.btn{flex:1;text-align:center;font-size:12px;font-weight:700;padding:9px 10px;border-radius:11px;border:1.5px solid var(--c);color:var(--c);transition:.15s}
+.btn:hover{background:var(--c);color:#fff}
+.btn.solid{background:var(--c);color:#fff}
+.btn.solid:hover{filter:brightness(1.12)}
+.btn.hard{border-style:dashed;opacity:.85}
+.qlinks a.hardq{border-style:dashed;opacity:.85}
+/* ---------- fila ---------- */
+.queue{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qitem{--c:#4f46e5;display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--sh)}
+.qitem .qn{width:30px;height:30px;border-radius:10px;background:color-mix(in srgb,var(--c) 11%,white);color:var(--c);display:grid;place-items:center;font-size:13px;font-weight:800}
+.qitem b{font-size:13.5px;display:block}
+.qitem small{font-size:11px;color:var(--mut);display:block;line-height:1.45;margin-top:2px}
+.qlinks{display:flex;flex-direction:column;gap:5px}
+.qlinks a{font-size:11px;font-weight:700;color:var(--c);border:1.2px solid color-mix(in srgb,var(--c) 35%,transparent);padding:4px 10px;border-radius:8px;text-align:center;transition:.15s}
+.qlinks a:hover{background:var(--c);color:#fff}
+footer{margin-top:60px;text-align:center;color:var(--mut);font-size:13px}
+footer b{font-family:'Fraunces',serif;font-size:15px;color:var(--ink)}
+@media(max-width:980px){.week{grid-template-columns:repeat(3,1fr)}.cols{grid-template-columns:1fr}.queue{grid-template-columns:1fr}}
+@media(max-width:560px){.week{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Ciclo em blocos · 100% questões · dupla exposição D+1</div>
+  <h1>Plano de estudos — <em>Lana Biatriz</em></h1>
+  <div class="meta">
+    <div class="chip">🏛️ <span>Área</span> Judiciária</div>
+    <div class="chip">🕒 <span>Rotina</span> seg–sex 3h · sáb 3h · dom livre</div>
+    <div class="chip">📚 <span>Frentes ativas</span> 5 por bloco</div>
+    <div class="chip">🗂️ <span>Pasta TEC</span> <a href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank" style="color:var(--accent);font-weight:700">Ciclo 2h CERTO + Fácil ↗</a></div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Semana padrão</h2>
+    <small>1 linha = 1 hora · grade fixa e rotativa · clique na atividade para abrir o caderno</small>
+  </div>
+  <div class="week">
+
+    <div class="day">
+      <div class="day-name">Segunda <i>3h</i></div>
+      <span class="hourlab">1ª hora</span>
+      <a class="act" style="--c:#4f46e5;--cbg:#eef2ff" href="https://www.tecconcursos.com.br/questoes/cadernos/96140936" target="_blank">
+        <span class="go">↗</span><span class="tag">Certo / Errado</span>
+        <b>Direito Constitucional</b><small>Frente A · caderno CERTO</small>
+      </a>
+      <span class="hourlab">2ª hora</span>
+      <a class="act" style="--c:#0d9488;--cbg:#effaf8" href="https://www.tecconcursos.com.br/questoes/cadernos/96141801" target="_blank">
+        <span class="go">↗</span><span class="tag">ABCDE · Fácil</span>
+        <b>Processo Civil</b><small>Frente E · revisão D+1 (da sexta)</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#7c3aed;--cbg:#f5f0fe" href="https://www.tecconcursos.com.br/questoes/cadernos/96145299" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Direito Administrativo</b><small>Frente D · treino D+2 (viu CERTO anteontem)</small>
+      </a>
+    </div>
+
+    <div class="day">
+      <div class="day-name">Terça <i>3h</i></div>
+      <span class="hourlab">1ª hora</span>
+      <a class="act" style="--c:#e11d48;--cbg:#fdf0f3" href="https://www.tecconcursos.com.br/questoes/cadernos/96141649" target="_blank">
+        <span class="go">↗</span><span class="tag">Certo / Errado</span>
+        <b>Direito Eleitoral</b><small>Frente B · caderno CERTO</small>
+      </a>
+      <span class="hourlab">2ª hora</span>
+      <a class="act" style="--c:#4f46e5;--cbg:#eef2ff" href="https://www.tecconcursos.com.br/questoes/cadernos/96141753" target="_blank">
+        <span class="go">↗</span><span class="tag">ABCDE · Fácil</span>
+        <b>Direito Constitucional</b><small>Frente A · revisão D+1</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#0d9488;--cbg:#effaf8" href="https://www.tecconcursos.com.br/questoes/cadernos/96145300" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Processo Civil</b><small>Frente E · treino D+2 (viu CERTO anteontem)</small>
+      </a>
+    </div>
+
+    <div class="day">
+      <div class="day-name">Quarta <i>3h</i></div>
+      <span class="hourlab">1ª hora</span>
+      <a class="act" style="--c:#059669;--cbg:#edf9f4" href="https://www.tecconcursos.com.br/questoes/cadernos/96141654" target="_blank">
+        <span class="go">↗</span><span class="tag">Certo / Errado</span>
+        <b>Direito Ambiental</b><small>Frente C · caderno CERTO</small>
+      </a>
+      <span class="hourlab">2ª hora</span>
+      <a class="act" style="--c:#e11d48;--cbg:#fdf0f3" href="https://www.tecconcursos.com.br/questoes/cadernos/96141757" target="_blank">
+        <span class="go">↗</span><span class="tag">ABCDE · Fácil</span>
+        <b>Direito Eleitoral</b><small>Frente B · revisão D+1</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#4f46e5;--cbg:#eef2ff" href="https://www.tecconcursos.com.br/questoes/cadernos/96145290" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Direito Constitucional</b><small>Frente A · treino D+2 (viu CERTO anteontem)</small>
+      </a>
+    </div>
+
+    <div class="day">
+      <div class="day-name">Quinta <i>3h</i></div>
+      <span class="hourlab">1ª hora</span>
+      <a class="act" style="--c:#7c3aed;--cbg:#f5f0fe" href="https://www.tecconcursos.com.br/questoes/cadernos/96141130" target="_blank">
+        <span class="go">↗</span><span class="tag">Certo / Errado</span>
+        <b>Direito Administrativo</b><small>Frente D · caderno CERTO</small>
+      </a>
+      <span class="hourlab">2ª hora</span>
+      <a class="act" style="--c:#059669;--cbg:#edf9f4" href="https://www.tecconcursos.com.br/questoes/cadernos/96141760" target="_blank">
+        <span class="go">↗</span><span class="tag">ABCDE · Fácil</span>
+        <b>Direito Ambiental</b><small>Frente C · revisão D+1</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#e11d48;--cbg:#fdf0f3" href="https://www.tecconcursos.com.br/questoes/cadernos/96145293" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Direito Eleitoral</b><small>Frente B · treino D+2 (viu CERTO anteontem)</small>
+      </a>
+    </div>
+
+    <div class="day">
+      <div class="day-name">Sexta <i>3h</i></div>
+      <span class="hourlab">1ª hora</span>
+      <a class="act" style="--c:#0d9488;--cbg:#effaf8" href="https://www.tecconcursos.com.br/questoes/cadernos/96141657" target="_blank">
+        <span class="go">↗</span><span class="tag">Certo / Errado</span>
+        <b>Processo Civil</b><small>Frente E · caderno CERTO</small>
+      </a>
+      <span class="hourlab">2ª hora</span>
+      <a class="act" style="--c:#7c3aed;--cbg:#f5f0fe" href="https://www.tecconcursos.com.br/questoes/cadernos/96141778" target="_blank">
+        <span class="go">↗</span><span class="tag">ABCDE · Fácil</span>
+        <b>Direito Administrativo</b><small>Frente D · revisão D+1</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#059669;--cbg:#edf9f4" href="https://www.tecconcursos.com.br/questoes/cadernos/96145297" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Direito Ambiental</b><small>Frente C · treino D+2 (viu CERTO anteontem)</small>
+      </a>
+    </div>
+
+    <div class="day">
+      <div class="day-name">Sábado <i>3h</i></div>
+      <span class="hourlab">1ª e 2ª horas</span>
+      <a class="act" style="--c:#b91c1c;--cbg:#fdf1f1" href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank">
+        <span class="go">↗</span><span class="tag">Revisão por erro</span>
+        <b>Erradas da semana</b><small>2h restauradas · filtro "as que errei" nos cadernos · prioridade absoluta</small>
+      </a>
+      <span class="hourlab">3ª hora</span>
+      <a class="act" style="--c:#1a1a2e;--cbg:#efeef6" href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank">
+        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
+        <b>Difícil+ da semana</b><small>caderno Difícil+ da frente com melhor acerto · se sobrarem erradas, elas têm prioridade</small>
+      </a>
+      <span class="hourlab" style="margin-top:6px">Domingo</span>
+      <div class="act" style="--c:#9b9aa3;--cbg:#f4f4f2"><span class="tag">Descanso</span><b>Livre</b><small>recuperação faz parte do método</small></div>
+    </div>
+
+  </div>
+  <div class="rulebar">
+    <div class="ic">🔁</div>
+    <div><b>Regra do ciclo (escada de dificuldade):</b> cada frente sobe em 3 degraus — CERTO no dia (D+0), ABCDE Fácil no dia seguinte (D+1) e Difícil+ dois dias depois (D+2). As frentes D e E fecham a escada atravessando o fim de semana. Tempo extra vai para revisão e erro — <b>nunca para matéria nova</b>. Se a frente ainda estiver abaixo de ~60% de acerto no Fácil, troque a hora de Difícil+ por mais ABCDE Fácil.<br><span style="display:inline-block;margin-top:8px"><b>Regra do 6 (cadernos CERTO):</b> a cada 6 questões respondidas como "Certo", responda a próxima deliberadamente como "Errado" — quebra a marcação no automático. Use o contador do Timer.</span><br><span style="display:inline-block;margin-top:8px"><b>Sábado (3h):</b> 1ª e 2ª horas = erradas da semana (prioridade absoluta); 3ª hora = caderno Difícil+ da frente com melhor acerto. Se as erradas não couberem em 2h, elas tomam a hora do Difícil+.</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="cols">
+    <div class="card">
+      <h3>Distribuição das horas</h3>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#4f46e5"></span>Frente A — Direito Constitucional</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:#4f46e5"></div></div></div>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#e11d48"></span>Frente B — Direito Eleitoral</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:#e11d48"></div></div></div>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#059669"></span>Frente C — Direito Ambiental</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:#059669"></div></div></div>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#7c3aed"></span>Frente D — Direito Administrativo</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:#7c3aed"></div></div></div>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#0d9488"></span>Frente E — Processo Civil</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:#0d9488"></div></div></div>
+      <div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#b91c1c"></span>Erradas da semana (sábado, 1ª e 2ª horas)</div><div class="bar-h">2h</div><div class="bar-track"><div class="bar-fill" style="width:11.1%;background:#b71c1c"></div></div></div><div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#1a1a2e"></span>Difícil+ da melhor frente (sábado, 3ª hora)</div><div class="bar-h">1h</div><div class="bar-track"><div class="bar-fill" style="width:5.6%;background:#1a1a2e"></div></div></div>
+      <div class="tot">
+        <div><b>15h</b><span>conteúdo</span></div>
+        <div><b>2h</b><span>erradas</span></div>
+        <div><b>1h</b><span>difícil+ sáb</span></div>
+        <div><b>18h</b><span>total semanal</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Prioridade em hora extra</h3>
+      <div class="prio">
+        <div class="p"><div class="n">1</div><div><b>Reforço</b><small>refazer questões dos assuntos com mais erro na semana</small></div></div>
+        <div class="p"><div class="n">2</div><div><b>Mais erradas</b><small>limpar a fila de erros pendentes de semanas anteriores</small></div></div>
+        <a href="https://www.tecconcursos.com.br/questoes/pastas/6943491" target="_blank"><div class="n">3</div><div><b>Caderno de Inéditas ↗</b><small>questões inéditas para Analista Judiciário (sua pasta principal)</small></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Frentes ativas — Bloco 1</h2>
+    <small>assuntos do cronograma como roteiro · frente concluída → entra a próxima da fila · <b>Difícil+</b> só quando o ABCDE Fácil passar de ~80% de acerto</small>
+  </div>
+  <div class="fgrid">
+    <div class="fcard" style="--c:#4f46e5">
+      <div class="ft"><div class="av">A</div><h4>Direito Constitucional</h4><span class="fr">Seg · Ter · Qua</span></div>
+      <p>Congresso Nacional (estrutura, atribuições, competências) · processo legislativo · iniciativa das leis · reforma constitucional · cláusulas pétreas · controle de constitucionalidade (difuso e estadual) · cidadania · família · índios · idoso · meio ambiente · ciência e tecnologia</p>
+      <div class="btns"><a class="btn solid" href="https://www.tecconcursos.com.br/questoes/cadernos/96140936" target="_blank">CERTO ↗</a><a class="btn" href="https://www.tecconcursos.com.br/questoes/cadernos/96141753" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="https://www.tecconcursos.com.br/questoes/cadernos/96145290" target="_blank">Difícil+ ↗</a></div>
+    </div>
+    <div class="fcard" style="--c:#e11d48">
+      <div class="ft"><div class="av">B</div><h4>Direito Eleitoral</h4><span class="fr">Ter · Qua · Qui</span></div>
+      <p>pluralismo político · reforma política · partidos · democracia direta · soberania popular · sistema representativo · suspensão de direitos políticos · inalistáveis e inelegíveis · alistamento · voto · sufrágio · Fundo Partidário · ética e fidelidade partidária</p>
+      <div class="btns"><a class="btn solid" href="https://www.tecconcursos.com.br/questoes/cadernos/96141649" target="_blank">CERTO ↗</a><a class="btn" href="https://www.tecconcursos.com.br/questoes/cadernos/96141757" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="https://www.tecconcursos.com.br/questoes/cadernos/96145293" target="_blank">Difícil+ ↗</a></div>
+    </div>
+    <div class="fcard" style="--c:#059669">
+      <div class="ft"><div class="av">C</div><h4>Direito Ambiental</h4><span class="fr">Qua · Qui · Sex</span></div>
+      <p>dever do Poder Público · tratados internacionais · responsabilidade por danos · art. 225 · natureza pública da proteção · desenvolvimento sustentável · princípios implícitos · ubiquidade · participação e informação · função socioambiental · usuário-pagador · poluidor-pagador · CONAMA/SISNAMA</p>
+      <div class="btns"><a class="btn solid" href="https://www.tecconcursos.com.br/questoes/cadernos/96141654" target="_blank">CERTO ↗</a><a class="btn" href="https://www.tecconcursos.com.br/questoes/cadernos/96141760" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="https://www.tecconcursos.com.br/questoes/cadernos/96145297" target="_blank">Difícil+ ↗</a></div>
+    </div>
+    <div class="fcard" style="--c:#7c3aed">
+      <div class="ft"><div class="av">D</div><h4>Direito Administrativo</h4><span class="fr">Qui · Sex · Seg</span></div>
+      <p>Administração Direta e Indireta · desconcentração x descentralização · órgãos públicos · controle hierárquico e finalístico · estatais (Lei 13.303/2016) · autarquias · PJ de direito público/privado · vícios dos atos · processo administrativo · abuso de poder · controle formal e de mérito · classificação dos atos</p>
+      <div class="btns"><a class="btn solid" href="https://www.tecconcursos.com.br/questoes/cadernos/96141130" target="_blank">CERTO ↗</a><a class="btn" href="https://www.tecconcursos.com.br/questoes/cadernos/96141778" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="https://www.tecconcursos.com.br/questoes/cadernos/96145299" target="_blank">Difícil+ ↗</a></div>
+    </div>
+    <div class="fcard" style="--c:#0d9488">
+      <div class="ft"><div class="av">E</div><h4>Processo Civil</h4><span class="fr">Sex · Seg · Ter</span></div>
+      <p>competência x jurisdição · critérios e modificação de competência · incompetência absoluta e relativa · conflito de competência · negócios jurídicos processuais · atos eletrônicos · comunicação dos atos · nulidades e invalidades · lugar e forma dos atos</p>
+      <div class="btns"><a class="btn solid" href="https://www.tecconcursos.com.br/questoes/cadernos/96141657" target="_blank">CERTO ↗</a><a class="btn" href="https://www.tecconcursos.com.br/questoes/cadernos/96141801" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="https://www.tecconcursos.com.br/questoes/cadernos/96145300" target="_blank">Difícil+ ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Fila de rotação</h2>
+    <small>ordem do seu cronograma · cada matéria entra com seus dois cadernos prontos</small>
+  </div>
+  <div class="queue">
+    <div class="qitem" style="--c:#d97706"><div class="qn">1</div><div><b>Direito Civil</b><small>associações · personalidade jurídica · PJ · sociedades · desconsideração inversa · fraude contra credores · erro · dolo · lesão · estado de perigo</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141364" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141808" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145311" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#ea580c"><div class="qn">2</div><div><b>Direito do Trabalho</b><small>reforma trabalhista (13.467/2017) · natureza e fontes · princípios · relação de trabalho x emprego · subordinação · terceirização · elementos</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141660" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141811" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145312" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#0891b2"><div class="qn">3</div><div><b>Processo do Trabalho</b><small>partes · princípios · autonomia · ação trabalhista · litisconsórcio · atos e termos · CCP · CPC subsidiário · nulidades · prazos CLT · competência</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141666" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141817" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145314" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#c026d3"><div class="qn">4</div><div><b>Direitos Humanos</b><small>racismo estrutural · fundamentos · características · gerações · efetividade · Teoria Crítica · universalismo x relativismo · Viena 1993</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141684" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141821" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145318" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#2563eb"><div class="qn">5</div><div><b>Direito Previdenciário</b><small>benefícios do RGPS · Previdência na CF · segurados · princípios · regimes · carência · prescrição e decadência</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141686" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141837" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145322" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#b91c1c"><div class="qn">6</div><div><b>Ministério Público</b><small>princípios institucionais · organização · garantias e vedações · funções · CNMP · Conselho Superior do MPU · LC 75/1993</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141689" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141839" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145327" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#475569"><div class="qn">7</div><div><b>Processo Penal</b><small>inquérito policial (conceito, prazos, diligências, arquivamento, sigilo, valor probatório) · polícia judiciária · ação penal · queixa-crime</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141692" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141844" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145330" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#374151"><div class="qn">8</div><div><b>Direito Penal</b><small>lei penal no tempo e espaço · retroatividade · extraterritorialidade · imunidades · erro de tipo · tentativa · iter criminis · culpa · causalidade</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141520" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141845" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145332" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#0284c7"><div class="qn">9</div><div><b>Língua Portuguesa</b><small>tipos e gêneros textuais · inferências · coesão · estrutura · leitura literal x inferencial · modos de organização · texto informativo</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96140367" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141746" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145336" target="_blank">Difícil+</a></div></div>
+    <div class="qitem" style="--c:#65a30d"><div class="qn">10</div><div><b>Administração Geral e Pública</b><small>papéis gerenciais (Mintzberg) · qualidade · efetividade · eficiência · planejamento operacional e estratégico · funções administrativas · competências</small></div><div class="qlinks"><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141694" target="_blank">CERTO</a><a href="https://www.tecconcursos.com.br/questoes/cadernos/96141849" target="_blank">ABCDE</a><a class="hardq" href="https://www.tecconcursos.com.br/questoes/cadernos/96145338" target="_blank">Difícil+</a></div></div>
+  </div>
+</section>
+
+<footer>
+  <b>Não basta ler. É preciso resolver.</b><br>
+  Disciplina hoje, aprovação amanhã.
+</footer>
+
+</div>
+
+<div id="tmr" style="position:fixed;right:22px;bottom:22px;z-index:99;width:240px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 40px -10px rgba(20,20,30,.35);padding:16px;font-family:'Inter',sans-serif">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+    <b style="font-size:13px">⏱ Timer</b>
+    <button id="tmin" style="border:none;background:var(--bg);border-radius:8px;width:24px;height:24px;cursor:pointer;font-weight:800;color:var(--mut)">–</button>
+  </div>
+  <div id="tbody">
+    <div style="position:relative;width:150px;height:150px;margin:0 auto 10px">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="66" fill="none" stroke="#f0efe9" stroke-width="9"/>
+        <circle id="ring" cx="75" cy="75" r="66" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" stroke-dasharray="414.7" stroke-dashoffset="0" transform="rotate(-90 75 75)" style="transition:stroke-dashoffset .3s linear"/>
+      </svg>
+      <div id="tdisp" style="position:absolute;inset:0;display:grid;place-items:center;font-size:30px;font-weight:800;letter-spacing:-.02em">60:00</div>
+    </div>
+    <div style="display:flex;gap:6px;justify-content:center;margin-bottom:10px">
+      <button class="tp" data-m="60" style="background:var(--soft);color:var(--accent)">60</button>
+      <button class="tp" data-m="30">30</button>
+      <button class="tp" data-m="25">25</button>
+      <button class="tp" data-m="5">5</button>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button id="tgo" style="flex:1;border:none;background:var(--accent);color:#fff;font-weight:800;font-size:13px;padding:10px;border-radius:12px;cursor:pointer">Iniciar</button>
+      <button id="trs" style="flex:0 0 70px;border:1.5px solid var(--line);background:var(--card);font-weight:700;font-size:13px;border-radius:12px;cursor:pointer;color:var(--mut)">Zerar</button>
+    </div>
+    <div style="margin-top:10px;border-top:1px dashed var(--line);padding-top:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Regra do 6 · CERTO</span>
+        <span id="c6" style="font-size:13px;font-weight:800">0/6</span>
+      </div>
+      <div id="c6dots" style="display:flex;gap:4px;margin-bottom:8px"></div>
+      <div style="display:flex;gap:6px">
+        <button id="c6add" style="flex:1;border:1.5px solid var(--accent);background:var(--soft);color:var(--accent);font-weight:800;font-size:12px;padding:7px;border-radius:10px;cursor:pointer">+1 Certo</button>
+        <button id="c6rst" style="flex:0 0 56px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font-weight:700;font-size:12px;border-radius:10px;cursor:pointer">Zerar</button>
+      </div>
+      <div id="c6msg" style="display:none;margin-top:8px;background:#fdf1f1;color:#b91c1c;font-size:11.5px;font-weight:700;border-radius:10px;padding:8px 10px;text-align:center">⚠️ Agora responda a próxima como ERRADO de propósito</div>
+    </div>
+  </div>
+</div>
+<style>.tp{border:1.5px solid var(--line);background:var(--card);font-weight:800;font-size:12px;width:40px;height:30px;border-radius:9px;cursor:pointer;color:var(--ink)}</style>
+<script>
+(function(){
+var total=3600,left=3600,run=null,C=414.69;
+var disp=document.getElementById('tdisp'),ring=document.getElementById('ring'),go=document.getElementById('tgo');
+function fmt(s){var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x}
+function draw(){disp.textContent=fmt(left);ring.style.strokeDashoffset=C*(1-left/total);document.title=run?('('+fmt(left)+') Plano de Estudos'):'Plano de Estudos · Lana Biatriz · Ciclo em Blocos'}
+function beep(){try{var a=new (window.AudioContext||window.webkitAudioContext)();var n=0;var f=function(){if(n++>5)return;var o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.setValueAtTime(.4,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.35);o.start();o.stop(a.currentTime+.4);setTimeout(f,500)};f()}catch(e){}}
+function tick(){if(left<=0){clearInterval(run);run=null;go.textContent='Iniciar';disp.style.color='#b91c1c';beep();draw();return}left--;draw()}
+go.onclick=function(){if(run){clearInterval(run);run=null;go.textContent='Continuar'}else{if(left<=0)left=total;disp.style.color='';run=setInterval(tick,1000);go.textContent='Pausar'}draw()};
+document.getElementById('trs').onclick=function(){clearInterval(run);run=null;left=total;disp.style.color='';go.textContent='Iniciar';draw()};
+document.querySelectorAll('.tp').forEach(function(b){b.onclick=function(){clearInterval(run);run=null;total=left=60*parseInt(b.dataset.m);disp.style.color='';go.textContent='Iniciar';document.querySelectorAll('.tp').forEach(function(x){x.style.background='var(--card)';x.style.color='var(--ink)'});b.style.background='var(--soft)';b.style.color='var(--accent)';draw()}});
+var open=true;document.getElementById('tmin').onclick=function(){open=!open;document.getElementById('tbody').style.display=open?'block':'none';document.getElementById('tmr').style.width=open?'240px':'150px';this.textContent=open?'–':'+'};
+draw();
+var c6n=0,c6=document.getElementById('c6'),dots=document.getElementById('c6dots'),msg=document.getElementById('c6msg');
+function c6draw(){c6.textContent=c6n+'/6';dots.innerHTML='';for(var i=0;i<6;i++){var d=document.createElement('div');d.style.cssText='flex:1;height:6px;border-radius:99px;background:'+(i<c6n?'var(--accent)':'#f0efe9');dots.appendChild(d)}msg.style.display=(c6n>=6)?'block':'none'}
+document.getElementById('c6add').onclick=function(){if(c6n>=6){c6n=0}else{c6n++}if(c6n>=6){beep()}c6draw()};
+document.getElementById('c6rst').onclick=function(){c6n=0;c6draw()};
+c6draw();
+})();
+</script>
+
+</body>
+</html>
