@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="papel">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plano de Estudos · Lana Biatriz · Ciclo em Blocos</title>
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚖️</text></svg>'>
+<title>Ciclo de Questões · Lana Biatriz</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="6" y="6" width="80" height="80" rx="21" fill="%23ffd43b" stroke="%2317151f" stroke-width="5"/><g transform="translate(46,47)"><circle cx="0" cy="0" r="22" fill="none" stroke="%2317151f" stroke-width="9" stroke-linecap="round" stroke-dasharray="104 35" transform="rotate(-52)"/><path d="M 19 -18 L 31 -9 L 16 -2 Z" fill="%2317151f"/><path d="M -11 1 L -3 9 L 13 -10" fill="none" stroke="%234f46e5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -17,10 +17,15 @@
   --mono:'Space Mono',ui-monospace,Menlo,monospace;
   --r:12px;
 }
+/* ---------- 5 layouts (paletas) · papel = padrão (:root) ---------- */
+html[data-theme="menta"]{--bg:#ecf5f0;--accent:#0f766e;--soft:#d7f0ea;--hl:#fde047}
+html[data-theme="coral"]{--bg:#fbf0ee;--accent:#e11d48;--soft:#fde4e7;--hl:#fdba74}
+html[data-theme="ceu"]{--bg:#eef2fb;--accent:#2563eb;--soft:#dbe6fd;--hl:#fde047}
+html[data-theme="uva"]{--bg:#f4eefb;--accent:#7c3aed;--soft:#ece2fb;--hl:#fde047}
 *{box-sizing:border-box;margin:0;padding:0}
 ::selection{background:var(--hl);color:var(--ink)}
 body{font-family:var(--body);background:var(--bg);background-image:radial-gradient(rgba(23,21,31,.07) 1px,transparent 1.5px);background-size:22px 22px;color:var(--ink);line-height:1.5;padding:0 0 90px;counter-reset:sec}
-.wrap{max-width:1120px;margin:0 auto;padding:42px 20px 0}
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 0}
 a{color:inherit;text-decoration:none}
 /* ---------- fita marquee ---------- */
 .tape{background:var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;padding:9px 0}
@@ -28,12 +33,25 @@ a{color:inherit;text-decoration:none}
 .tape-in span{display:inline-block;font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--hl);padding-right:8px}
 @keyframes tape{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.tape-in{animation:none}}
-/* ---------- hero ---------- */
+/* ---------- brand / hero ---------- */
+.brand{display:inline-flex;align-items:center;gap:14px;margin-bottom:24px}
+.brand svg{display:block;width:56px;height:56px}
+.brand .bt b{display:block;font-family:var(--disp);font-size:23px;letter-spacing:-.5px;line-height:1;text-transform:uppercase}
+.brand .bt span{display:block;font:700 11px var(--mono);letter-spacing:.22em;color:var(--accent);margin-top:4px}
+.themebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+.themelab{font:700 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.swatch{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:5px 11px 5px 7px;cursor:pointer;box-shadow:2px 2px 0 var(--ink);font:700 11px var(--mono);color:var(--ink);transition:transform .1s}
+.swatch:hover{transform:translate(-1px,-1px)}
+.swatch:active{transform:translate(1px,1px);box-shadow:none}
+.swatch.on{background:var(--hl)}
+.swatch .dt{display:inline-flex}
+.swatch .dt i{width:13px;height:13px;border:2px solid var(--ink);border-radius:3px;display:block}
+.swatch .dt i+i{margin-left:-5px}
 .hero{margin-bottom:46px}
-h1{font-family:var(--disp);font-size:clamp(32px,5.4vw,62px);font-weight:400;letter-spacing:-.01em;line-height:1.02;text-transform:uppercase}
+h1{font-family:var(--disp);font-size:clamp(28px,4.6vw,52px);font-weight:400;letter-spacing:-.01em;line-height:1.04;text-transform:uppercase}
 h1 em{font-style:normal;color:var(--ink);background:var(--hl);box-shadow:4px 4px 0 var(--ink);padding:0 10px;display:inline-block;transform:rotate(-1deg)}
 .meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:2px solid var(--ink);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .12s}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:2px solid var(--ink);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .chip:nth-child(odd){transform:rotate(-.6deg)}
 .chip:nth-child(even){transform:rotate(.6deg)}
 .chip:hover{transform:rotate(0) translate(-1px,-1px)}
@@ -46,19 +64,20 @@ h1 em{font-style:normal;color:var(--ink);background:var(--hl);box-shadow:4px 4px
 .wkprog-track{height:16px;border:2px solid var(--ink);border-radius:99px;background:#e9e4d6;overflow:hidden}
 .wkprog-fill{height:100%;width:0;background:var(--accent);background-image:repeating-linear-gradient(45deg,transparent 0 7px,rgba(255,255,255,.35) 7px 14px);transition:width .3s ease}
 /* ---------- section titles ---------- */
-.sec{margin-top:64px}
+.sec{margin-top:60px}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap;counter-increment:sec;border-bottom:3px solid var(--ink);padding-bottom:10px}
 h2{font-family:var(--disp);font-size:clamp(20px,2.6vw,28px);font-weight:400;letter-spacing:.01em;text-transform:uppercase}
 h2::before{content:counter(sec,decimal-leading-zero);font:700 13px var(--mono);color:var(--card);background:var(--ink);padding:3px 8px;border-radius:6px;margin-right:12px;vertical-align:middle}
 .sec-head small{font:500 11.5px var(--mono);color:var(--mut)}
-/* ---------- week grid ---------- */
-.week{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+/* ---------- ciclo grid ---------- */
+.cycgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .day{background:var(--card);border:2px solid var(--ink);border-radius:var(--r);padding:12px;box-shadow:5px 5px 0 rgba(23,21,31,.85);display:flex;flex-direction:column;gap:10px;overflow:hidden}
-.day-name{margin:-12px -12px 2px;padding:10px 14px;background:var(--ink);color:#fff;font:700 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
-.day-name i{font-style:normal;font-size:10px;font-weight:700;color:var(--hl)}
+.day-name{margin:-12px -12px 2px;padding:10px 14px;background:var(--ink);color:#fff;font:700 12px var(--mono);letter-spacing:.1em;display:flex;align-items:center;gap:4px}
+.cyc .day-name{background:color-mix(in srgb,var(--c) 76%,#17151f)}
+.cycnum{display:inline-block;background:var(--hl);color:var(--ink);font:400 11px var(--disp);padding:1px 6px;border-radius:5px;margin-right:5px}
 .day.today{border-color:var(--accent);box-shadow:6px 6px 0 var(--accent)}
-.day.today .day-name{background:var(--accent)}
-.day-name .hoje{font:700 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--hl);color:var(--ink);border:2px solid var(--ink);padding:2px 7px;border-radius:6px;margin-left:auto;margin-right:7px;transform:rotate(-5deg)}
+.sat.today .day-name{background:var(--accent)}
+.day-name .agbadge{font:700 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--hl);color:var(--ink);border:2px solid var(--ink);padding:2px 7px;border-radius:6px;margin-left:auto;transform:rotate(-4deg)}
 .act{--c:#4f46e5;--cbg:#eef2ff;display:block;border-radius:9px;padding:10px 11px;background:var(--cbg);border:2px solid var(--c);position:relative;transition:transform .12s ease, box-shadow .12s ease}
 .act:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 color-mix(in srgb,var(--c) 65%,transparent)}
 .act .tag{display:flex;align-items:flex-start;gap:5px;font:700 9px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-bottom:6px;padding-right:22px}
@@ -69,10 +88,23 @@ h2::before{content:counter(sec,decimal-leading-zero);font:700 13px var(--mono);c
 .act.done .tag,.act.done b,.act.done small,.act.done .go{opacity:.32}
 .act.done{border-style:dashed}
 .act.done::after{content:'CUMPRIDO';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-9deg);font:700 11px var(--mono);letter-spacing:.22em;color:var(--stamp);border:3px double var(--stamp);padding:4px 9px 3px 11px;border-radius:6px;background:rgba(255,253,246,.82)}
-.hourlab{display:flex;align-items:center;justify-content:space-between;gap:6px;font:700 9.5px var(--mono);color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+.act.dif{border-style:dashed;opacity:.92}
+.hourlab{display:flex;align-items:center;justify-content:space-between;gap:6px;font:700 9.5px var(--mono);color:var(--mut);letter-spacing:.08em;text-transform:uppercase}
+.hourlab.dif-lab{color:var(--stamp);margin-top:2px}
 .chk{flex:0 0 19px;width:19px;height:19px;border-radius:5px;border:2px solid var(--ink);background:var(--card);color:transparent;font-size:11px;font-weight:800;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0;transition:.12s;box-shadow:2px 2px 0 rgba(23,21,31,.5)}
 .chk:hover{color:var(--accent);transform:translate(-1px,-1px)}
 .chk.on{background:var(--accent);border-color:var(--ink);color:#fff;box-shadow:none}
+.cyc .trocar{display:none;width:100%;margin-top:6px;border:2px solid var(--ink);background:var(--hl);color:var(--ink);font:700 11px var(--mono);letter-spacing:.03em;text-transform:uppercase;padding:10px;border-radius:8px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.cyc.complete .trocar{display:block}
+.cyc .trocar:hover{filter:brightness(1.04)}
+.cyc .trocar:active{transform:translate(2px,2px);box-shadow:none}
+.qitem.next{border-color:var(--accent);box-shadow:4px 4px 0 var(--accent)}
+.qnext{display:inline-block;font:700 8px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 6px;border-radius:5px;margin-left:7px;vertical-align:middle}
+/* ---------- fim de semana ---------- */
+.weekend{display:grid;grid-template-columns:1.7fr 1fr;gap:16px;margin-top:16px}
+.sat .day-name,.dom .day-name{letter-spacing:.06em}
+.dom .day-name{background:#6f6e76}
+@media(max-width:560px){.weekend{grid-template-columns:1fr}}
 /* ---------- edital (regras) ---------- */
 .rulebar{margin-top:22px;background:var(--ink);color:#dcd9e8;border:2px solid var(--ink);border-radius:var(--r);padding:22px;box-shadow:6px 6px 0 rgba(23,21,31,.35);display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .rulebar .rule{display:flex;gap:13px;align-items:flex-start}
@@ -85,37 +117,36 @@ h2::before{content:counter(sec,decimal-leading-zero);font:700 13px var(--mono);c
 .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
 .card{background:var(--card);border:2px solid var(--ink);border-radius:var(--r);box-shadow:5px 5px 0 rgba(23,21,31,.85);padding:22px}
 .card h3{font-family:var(--disp);font-weight:400;font-size:16px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
-.bar-row{display:grid;grid-template-columns:1fr 48px;gap:10px;align-items:center;padding:8px 0}
-.bar-row+.bar-row{border-top:2px dashed #d8d2c2}
-.bar-lab{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
-.dot{width:12px;height:12px;border-radius:3px;border:2px solid var(--ink);flex:0 0 12px}
-.bar-h{font:700 13px var(--mono);text-align:right;color:var(--ink)}
-.bar-track{grid-column:1/-1;height:10px;border:2px solid var(--ink);border-radius:99px;background:#e9e4d6;overflow:hidden;margin-top:-2px}
-.bar-fill{height:100%;border-radius:99px;background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(255,255,255,.35) 6px 12px)}
+.cad-row{display:flex;align-items:center;gap:11px;padding:10px 0}
+.cad-row+.cad-row{border-top:2px dashed #d8d2c2}
+.cad-row .dot{width:13px;height:13px;border-radius:3px;border:2px solid var(--ink);flex:0 0 13px}
+.cad-row b{font-size:13px;font-weight:600;flex:1}
+.cad-row span{font:700 10px var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.06em;text-align:right}
 .tot{display:flex;gap:12px;margin-top:18px}
-.tot div{flex:1;background:var(--hl);border:2px solid var(--ink);border-radius:9px;padding:12px;text-align:center;box-shadow:3px 3px 0 var(--ink)}
-.tot b{display:block;font:700 20px var(--mono)}
-.tot span{font:700 9px var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.1em}
+.tot div{flex:1;background:var(--hl);border:2px solid var(--ink);border-radius:9px;padding:12px 8px;text-align:center;box-shadow:3px 3px 0 var(--ink)}
+.tot b{display:block;font:700 18px var(--mono)}
+.tot span{font:700 8.5px var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.08em}
 .prio{display:flex;flex-direction:column;gap:12px}
 .prio a,.prio .p{display:flex;gap:14px;align-items:center;background:var(--bg);border:2px solid var(--ink);border-radius:9px;padding:13px 15px;transition:transform .12s,box-shadow .12s}
 .prio a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink);background:var(--soft)}
 .prio .n{flex:0 0 30px;height:30px;border-radius:8px;background:var(--ink);color:var(--hl);display:grid;place-items:center;font:700 14px var(--mono)}
 .prio b{font-size:13.5px;display:block}
 .prio small{font-size:11.5px;color:var(--mut)}
-/* ---------- frentes ---------- */
+/* ---------- matérias do ciclo ---------- */
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px}
 .fcard{--c:#4f46e5;position:relative;background:var(--card);border:2px solid var(--ink);border-radius:var(--r);box-shadow:5px 5px 0 rgba(23,21,31,.85);padding:24px 18px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
 .fcard::before{content:'';position:absolute;inset:0 0 auto 0;height:9px;background:var(--c)}
 .fcard .ft{display:flex;align-items:center;gap:10px}
 .fcard .av{width:34px;height:34px;border-radius:8px;background:var(--c);color:#fff;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);display:grid;place-items:center;font:400 14px var(--disp)}
 .fcard h4{font-size:15px;font-weight:700;flex:1;line-height:1.2}
-.fcard .fr{font:700 9.5px var(--mono);letter-spacing:.12em;color:var(--mut);text-transform:uppercase}
+.fcard .fr{font:700 9.5px var(--mono);letter-spacing:.1em;color:var(--mut);text-transform:uppercase}
 .fcard p{font-size:12px;color:var(--mut);line-height:1.6}
-.btns{display:flex;gap:8px;margin-top:auto;padding-top:6px}
-.btn{flex:1;text-align:center;font-size:12px;font-weight:700;padding:9px 10px;border-radius:8px;border:2px solid var(--c);color:var(--c);transition:.12s}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.btn{flex:1 1 calc(50% - 4px);text-align:center;font-size:11.5px;font-weight:700;padding:9px 8px;border-radius:8px;border:2px solid var(--c);color:var(--c);transition:.12s}
 .btn:hover{background:var(--c);color:#fff;transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
 .btn.solid{background:var(--c);color:#fff;box-shadow:2px 2px 0 var(--ink)}
 .btn.solid:hover{filter:brightness(1.1)}
+.btn.juris{border-style:double;border-width:3px}
 .btn.hard{border-style:dashed;opacity:.9}
 .qlinks a.hardq{border-style:dashed;opacity:.9}
 /* ---------- fila ---------- */
@@ -156,78 +187,100 @@ footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:
 #c6add:active{transform:translate(1px,1px)}
 #c6rst{flex:0 0 56px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;font-size:12px;border-radius:8px;cursor:pointer}
 #c6msg{display:none;margin-top:8px;font-size:11.5px;font-weight:700;border:2px solid currentColor;border-radius:8px;padding:8px 10px;text-align:center}
-@media(max-width:980px){.week{grid-template-columns:repeat(3,1fr)}.cols{grid-template-columns:1fr}.queue{grid-template-columns:1fr}.rulebar{grid-template-columns:1fr}}
+@media(max-width:980px){.cols{grid-template-columns:1fr}.queue{grid-template-columns:1fr}.rulebar{grid-template-columns:1fr}}
 @media(max-width:560px){
-  .week{grid-template-columns:repeat(2,1fr)}
   body{padding-bottom:150px}
   body.tmropen{padding-bottom:450px}
   #tmr{right:12px;bottom:12px;width:224px}
   #tmr.min{width:132px;padding:12px 14px}
 }
 </style>
+<script>try{var _t=localStorage.getItem('theme-v1');if(_t)document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 </head>
 <body>
 
-<div class="tape" aria-hidden="true"><div class="tape-in"><span>Ciclo em blocos ✦ 100% questões ✦ dupla exposição D+1 ✦ não basta ler, é preciso resolver ✦ Ciclo em blocos ✦ 100% questões ✦ dupla exposição D+1 ✦ rumo à aprovação ✦ </span><span>Ciclo em blocos ✦ 100% questões ✦ dupla exposição D+1 ✦ não basta ler, é preciso resolver ✦ Ciclo em blocos ✦ 100% questões ✦ dupla exposição D+1 ✦ rumo à aprovação ✦ </span></div></div>
+<div class="tape" aria-hidden="true"><div class="tape-in"><span>Ciclo de Questões ✦ 100% questões ✦ certas → ABCDE fácil ✦ jurisprudência todo dia ✦ não basta ler, é preciso resolver ✦ Ciclo de Questões ✦ 100% questões ✦ certas → ABCDE fácil ✦ jurisprudência todo dia ✦ rumo à aprovação ✦ </span><span>Ciclo de Questões ✦ 100% questões ✦ certas → ABCDE fácil ✦ jurisprudência todo dia ✦ não basta ler, é preciso resolver ✦ Ciclo de Questões ✦ 100% questões ✦ certas → ABCDE fácil ✦ jurisprudência todo dia ✦ rumo à aprovação ✦ </span></div></div>
 
 <div class="wrap">
 
 <header class="hero">
+  <div class="brand">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="13" y="14" width="80" height="80" rx="21" fill="#17151f"/>
+      <rect x="6" y="6" width="80" height="80" rx="21" fill="#ffd43b" stroke="#17151f" stroke-width="5"/>
+      <g transform="translate(46,47)">
+        <circle cx="0" cy="0" r="22" fill="none" stroke="#17151f" stroke-width="9" stroke-linecap="round" stroke-dasharray="104 35" transform="rotate(-52)"/>
+        <path d="M 19 -18 L 31 -9 L 16 -2 Z" fill="#17151f"/>
+        <path d="M -11 1 L -3 9 L 13 -10" fill="none" stroke="#4f46e5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </svg>
+    <div class="bt"><b>Ciclo</b><span>de Questões</span></div>
+  </div>
   <h1>Plano de estudos — <em>Lana Biatriz</em></h1>
   <div class="meta">
     <div class="chip">🏛️ <span>Área</span> Judiciária</div>
-    <div class="chip">🕒 <span>Rotina</span> seg–sex 3h · sáb 3h · dom livre</div>
-    <div class="chip">📚 <span>Frentes ativas</span> 5 por bloco</div>
+    <div class="chip">🔁 <span>Ciclo</span> 6 matérias · certas → ABCDE fácil</div>
+    <div class="chip">⚖️ <span>Todo dia</span> bloco de jurisprudência</div>
     <div class="chip">🗂️ <span>Pasta TEC</span> <a href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank" style="color:var(--accent);font-weight:700">Ciclo 2h CERTO + Fácil ↗</a></div>
   </div>
+  <div class="themebar">
+    <span class="themelab">Layout</span>
+    <button class="swatch" type="button" data-theme="papel"><span class="dt"><i style="background:#4f46e5"></i><i style="background:#ffd43b"></i></span>Papel</button>
+    <button class="swatch" type="button" data-theme="menta"><span class="dt"><i style="background:#0f766e"></i><i style="background:#fde047"></i></span>Menta</button>
+    <button class="swatch" type="button" data-theme="coral"><span class="dt"><i style="background:#e11d48"></i><i style="background:#fdba74"></i></span>Coral</button>
+    <button class="swatch" type="button" data-theme="ceu"><span class="dt"><i style="background:#2563eb"></i><i style="background:#fde047"></i></span>Céu</button>
+    <button class="swatch" type="button" data-theme="uva"><span class="dt"><i style="background:#7c3aed"></i><i style="background:#fde047"></i></span>Uva</button>
+  </div>
   <div class="wkprog">
-    <div class="wkprog-top"><span>Progresso da semana</span><b id="wkprog-lab">0h de 18h concluídas</b></div>
+    <div class="wkprog-top"><span>Progresso do ciclo</span><b id="wkprog-lab">0 de 0 blocos</b></div>
     <div class="wkprog-track"><div class="wkprog-fill" id="wkprog-fill"></div></div>
   </div>
 </header>
 
 <section class="sec">
   <div class="sec-head">
-    <h2>Semana padrão</h2>
-    <small>1 linha = 1 hora · grade fixa e rotativa · clique na atividade para abrir o caderno · ✓ marca a hora como feita</small>
+    <h2>O ciclo</h2>
+    <small>ordem fixa · cada matéria = jurisprudência + certas + ABCDE fácil · ✓ marca como feito · conclua os 3 blocos para trocar pela próxima da fila</small>
   </div>
-  <noscript><p style="margin-bottom:14px;color:#b91c1c;font-weight:600">Ative o JavaScript para ver a grade semanal, as frentes e a fila de rotação.</p></noscript>
-  <div class="week">
-
-    <div class="day" id="sat">
-      <div class="day-name">Sábado <i>3h</i></div>
-      <span class="hourlab">1ª e 2ª horas <button class="chk" type="button" data-act="sab1" aria-label="Marcar como feita">✓</button></span>
-      <a class="act" style="--c:#b91c1c;--cbg:#fdf1f1" href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank" data-act="sab1" data-hours="2">
+  <noscript><p style="margin-bottom:14px;color:#b91c1c;font-weight:600">Ative o JavaScript para ver o ciclo, as matérias e a fila de rotação.</p></noscript>
+  <div class="cycgrid" id="cycgrid"></div>
+  <div class="weekend">
+    <div class="day sat" id="sat">
+      <div class="day-name">Sábado · só erros</div>
+      <span class="hourlab">Caderno de erros <button class="chk" type="button" data-act="sab" aria-label="Marcar como feita">✓</button></span>
+      <a class="act" style="--c:#b91c1c;--cbg:#fdf1f1" href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank" data-act="sab" data-blk="1">
         <span class="go">↗</span><span class="tag">Revisão por erro</span>
-        <b>Erradas da semana</b><small>2h restauradas · filtro "as que errei" nos cadernos · prioridade absoluta</small>
+        <b>Erradas da semana</b><small>filtro "as que errei" nos cadernos · prioridade absoluta · nada de matéria nova</small>
       </a>
-      <span class="hourlab">3ª hora <button class="chk" type="button" data-act="sab2" aria-label="Marcar como feita">✓</button></span>
-      <a class="act" style="--c:#1a1a2e;--cbg:#efeef6" href="https://www.tecconcursos.com.br/questoes/pastas/7029075" target="_blank" data-act="sab2" data-hours="1">
-        <span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span>
-        <b>Difícil+ da semana</b><small>caderno Difícil+ da frente com melhor acerto · se sobrarem erradas, elas têm prioridade</small>
-      </a>
-      <span class="hourlab" style="margin-top:6px">Domingo</span>
+    </div>
+    <div class="day dom">
+      <div class="day-name">Domingo · livre</div>
       <div class="act" style="--c:#9b9aa3;--cbg:#f4f4f2"><span class="tag">Descanso</span><b>Livre</b><small>recuperação faz parte do método</small></div>
     </div>
-
   </div>
   <div class="rulebar">
-    <div class="rule"><div class="ic">🔁</div><div><span class="art">Art. 1º</span><h5>Regra do ciclo (escada de dificuldade)</h5><p>Cada frente sobe em 3 degraus — <b>CERTO</b> no dia (D+0), <b>ABCDE Fácil</b> no dia seguinte (D+1) e <b>Difícil+</b> dois dias depois (D+2). As frentes D e E fecham a escada atravessando o fim de semana. Tempo extra vai para revisão e erro — <b>nunca para matéria nova</b>. Se a frente ainda estiver abaixo de ~60% de acerto no Fácil, troque a hora de Difícil+ por mais ABCDE Fácil.</p></div></div>
+    <div class="rule"><div class="ic">🔁</div><div><span class="art">Art. 1º</span><h5>Regra do ciclo</h5><p>Cada matéria tem 2 passadas seguidas: <b>Certas</b> (caderno CERTO) e depois <b>ABCDE</b> muito fáceis + fáceis. A ordem do ciclo é <b>Constitucional → Processo Civil → Direito Civil → Ambiental → Administrativo → Eleitoral</b>, e recomeça. Todo dia abre com o <b>bloco de jurisprudência</b> da matéria. Ao concluir os 3 blocos, use <b>Trocar</b>: a matéria volta pro fim da fila e a próxima entra. Tempo extra vai para revisão e erro — <b>nunca para matéria nova</b>.</p></div></div>
     <div class="rule"><div class="ic">6️⃣</div><div><span class="art">Art. 2º</span><h5>Regra do 6 (cadernos CERTO)</h5><p>A cada 6 questões respondidas como "Certo", responda a próxima deliberadamente como "Errado" — quebra a marcação no automático. Use o contador do Timer.</p></div></div>
-    <div class="rule"><div class="ic">📌</div><div><span class="art">Art. 3º</span><h5>Sábado (3h)</h5><p>1ª e 2ª horas = erradas da semana (prioridade absoluta); 3ª hora = caderno Difícil+ da frente com melhor acerto. Se as erradas não couberem em 2h, elas tomam a hora do Difícil+.</p></div></div>
+    <div class="rule"><div class="ic">📌</div><div><span class="art">Art. 3º</span><h5>Sábado &amp; Difícil+</h5><p><b>Sábado:</b> APENAS caderno de erros (as que errei na semana) — domingo é livre. As questões <b>Difícil+</b> (difícil + muito difícil) entram <b>a cada 15 dias</b>: na virada da quinzena, rode os cadernos Difícil+ das 6 matérias.</p></div></div>
   </div>
 </section>
 
 <section class="sec">
   <div class="cols">
     <div class="card">
-      <h3>Distribuição das horas</h3>
-      <div id="dist"></div>
+      <h3>Como roda o ciclo</h3>
+      <div class="cad">
+        <div class="cad-row"><span class="dot" style="background:var(--accent)"></span><b>Jurisprudência da matéria</b><span>todo dia</span></div>
+        <div class="cad-row"><span class="dot" style="background:var(--ink)"></span><b>Certas · caderno CERTO</b><span>1ª passada</span></div>
+        <div class="cad-row"><span class="dot" style="background:#0d9488"></span><b>ABCDE muito fácil + fácil</b><span>2ª passada</span></div>
+        <div class="cad-row"><span class="dot" style="background:#b91c1c"></span><b>Caderno de erros</b><span>sábado</span></div>
+        <div class="cad-row"><span class="dot" style="background:#6f6e76"></span><b>Difícil + muito difícil</b><span>a cada 15 dias</span></div>
+      </div>
       <div class="tot">
-        <div><b>15h</b><span>conteúdo</span></div>
-        <div><b>2h</b><span>erradas</span></div>
-        <div><b>1h</b><span>difícil+ sáb</span></div>
-        <div><b>18h</b><span>total semanal</span></div>
+        <div><b>6</b><span>matérias</span></div>
+        <div><b>3</b><span>blocos/matéria</span></div>
+        <div><b>Sáb</b><span>só erros</span></div>
+        <div><b>15d</b><span>difícil+</span></div>
       </div>
     </div>
     <div class="card">
@@ -243,8 +296,8 @@ footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:
 
 <section class="sec">
   <div class="sec-head">
-    <h2>Frentes ativas — Bloco 1</h2>
-    <small>assuntos do cronograma como roteiro · frente concluída → entra a próxima da fila · <b>Difícil+</b> só quando o ABCDE Fácil passar de ~80% de acerto</small>
+    <h2>Matérias do ciclo</h2>
+    <small>assuntos do cronograma como roteiro · cada matéria abre com jurisprudência, depois certas e ABCDE fácil · Difícil+ a cada 15 dias</small>
   </div>
   <div class="fgrid" id="fgrid"></div>
 </section>
@@ -252,7 +305,7 @@ footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:
 <section class="sec">
   <div class="sec-head">
     <h2>Fila de rotação</h2>
-    <small>ordem do seu cronograma · cada matéria entra com seus dois cadernos prontos</small>
+    <small>ao concluir uma matéria do ciclo, ela volta pro fim e a 1ª da fila (marcada <b>próxima</b>) entra no lugar · cada uma já vem com seus cadernos</small>
   </div>
   <div class="queue" id="queue"></div>
 </section>
@@ -305,98 +358,106 @@ footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:
 (function(){
 /* ================== DADOS ==================
    Para trocar de bloco, edite SOMENTE os arrays abaixo.
-   A grade semanal, os cards de frentes, a distribuição de horas
-   e a fila de rotação são gerados a partir deles.
-   Em FRENTES, a ordem do array é a ordem da escada (CERTO de seg→sex). */
-var FRENTES=[
-  {id:'A',nome:'Direito Constitucional',c:'#4f46e5',cbg:'#eef2ff',dias:'Seg · Ter · Qua',
+   O ciclo, os cards de matérias e a fila são gerados a partir deles.
+   CICLO = a ordem fixa da regra. Cada matéria roda em 3 blocos:
+   jurisprudência (todo dia) → certas (CERTO) → ABCDE muito fácil + fácil.
+   Difícil+ fica guardado e entra a cada 15 dias.
+
+   >>> JURISPRUDÊNCIA: o campo "juris" está como PLACEHOLDER apontando para a
+   pasta principal. Crie no TEC o caderno de jurisprudência de cada matéria e
+   troque o link aqui (um por matéria). */
+var JURIS_PH='https://www.tecconcursos.com.br/questoes/pastas/7029075'; // PLACEHOLDER · troque pelo caderno de jurisprudência de cada matéria
+var CAD='https://www.tecconcursos.com.br/questoes/cadernos/';
+
+/* Pool único de 15 matérias. O ciclo são as 6 PRIMEIRAS de `ordem`; o resto é a
+   fila de rotação. Ao concluir uma matéria (3 blocos feitos), o botão "trocar"
+   joga ela pro fim de `ordem` e a 1ª da fila entra no ciclo — isso fica salvo.
+   A ordem padrão segue a sua regra. Edite só este objeto/array para mudar dados. */
+var MAT={
+  constituc:{nome:'Direito Constitucional',c:'#4f46e5',cbg:'#eef2ff',
    assuntos:'Congresso Nacional (estrutura, atribuições, competências) · processo legislativo · iniciativa das leis · reforma constitucional · cláusulas pétreas · controle de constitucionalidade (difuso e estadual) · cidadania · família · índios · idoso · meio ambiente · ciência e tecnologia',
-   certo:'https://www.tecconcursos.com.br/questoes/cadernos/96140936',
-   facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141753',
-   dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145290'},
-  {id:'B',nome:'Direito Eleitoral',c:'#e11d48',cbg:'#fdf0f3',dias:'Ter · Qua · Qui',
-   assuntos:'pluralismo político · reforma política · partidos · democracia direta · soberania popular · sistema representativo · suspensão de direitos políticos · inalistáveis e inelegíveis · alistamento · voto · sufrágio · Fundo Partidário · ética e fidelidade partidária',
-   certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141649',
-   facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141757',
-   dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145293'},
-  {id:'C',nome:'Direito Ambiental',c:'#059669',cbg:'#edf9f4',dias:'Qua · Qui · Sex',
-   assuntos:'dever do Poder Público · tratados internacionais · responsabilidade por danos · art. 225 · natureza pública da proteção · desenvolvimento sustentável · princípios implícitos · ubiquidade · participação e informação · função socioambiental · usuário-pagador · poluidor-pagador · CONAMA/SISNAMA',
-   certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141654',
-   facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141760',
-   dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145297'},
-  {id:'D',nome:'Direito Administrativo',c:'#7c3aed',cbg:'#f5f0fe',dias:'Qui · Sex · Seg',
-   assuntos:'Administração Direta e Indireta · desconcentração x descentralização · órgãos públicos · controle hierárquico e finalístico · estatais (Lei 13.303/2016) · autarquias · PJ de direito público/privado · vícios dos atos · processo administrativo · abuso de poder · controle formal e de mérito · classificação dos atos',
-   certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141130',
-   facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141778',
-   dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145299'},
-  {id:'E',nome:'Processo Civil',c:'#0d9488',cbg:'#effaf8',dias:'Sex · Seg · Ter',
+   juris:JURIS_PH,certo:CAD+'96140936',facil:CAD+'96141753',dificil:CAD+'96145290'},
+  pciv:{nome:'Processo Civil',c:'#0d9488',cbg:'#effaf8',
    assuntos:'competência x jurisdição · critérios e modificação de competência · incompetência absoluta e relativa · conflito de competência · negócios jurídicos processuais · atos eletrônicos · comunicação dos atos · nulidades e invalidades · lugar e forma dos atos',
-   certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141657',
-   facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141801',
-   dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145300'}
-];
-var FILA=[
-  {n:1,nome:'Direito Civil',c:'#d97706',assuntos:'associações · personalidade jurídica · PJ · sociedades · desconsideração inversa · fraude contra credores · erro · dolo · lesão · estado de perigo',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141364',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141808',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145311'},
-  {n:2,nome:'Direito do Trabalho',c:'#ea580c',assuntos:'reforma trabalhista (13.467/2017) · natureza e fontes · princípios · relação de trabalho x emprego · subordinação · terceirização · elementos',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141660',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141811',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145312'},
-  {n:3,nome:'Processo do Trabalho',c:'#0891b2',assuntos:'partes · princípios · autonomia · ação trabalhista · litisconsórcio · atos e termos · CCP · CPC subsidiário · nulidades · prazos CLT · competência',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141666',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141817',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145314'},
-  {n:4,nome:'Direitos Humanos',c:'#c026d3',assuntos:'racismo estrutural · fundamentos · características · gerações · efetividade · Teoria Crítica · universalismo x relativismo · Viena 1993',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141684',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141821',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145318'},
-  {n:5,nome:'Direito Previdenciário',c:'#2563eb',assuntos:'benefícios do RGPS · Previdência na CF · segurados · princípios · regimes · carência · prescrição e decadência',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141686',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141837',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145322'},
-  {n:6,nome:'Ministério Público',c:'#b91c1c',assuntos:'princípios institucionais · organização · garantias e vedações · funções · CNMP · Conselho Superior do MPU · LC 75/1993',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141689',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141839',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145327'},
-  {n:7,nome:'Processo Penal',c:'#475569',assuntos:'inquérito policial (conceito, prazos, diligências, arquivamento, sigilo, valor probatório) · polícia judiciária · ação penal · queixa-crime',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141692',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141844',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145330'},
-  {n:8,nome:'Direito Penal',c:'#374151',assuntos:'lei penal no tempo e espaço · retroatividade · extraterritorialidade · imunidades · erro de tipo · tentativa · iter criminis · culpa · causalidade',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141520',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141845',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145332'},
-  {n:9,nome:'Língua Portuguesa',c:'#0284c7',assuntos:'tipos e gêneros textuais · inferências · coesão · estrutura · leitura literal x inferencial · modos de organização · texto informativo',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96140367',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141746',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145336'},
-  {n:10,nome:'Administração Geral e Pública',c:'#65a30d',assuntos:'papéis gerenciais (Mintzberg) · qualidade · efetividade · eficiência · planejamento operacional e estratégico · funções administrativas · competências',certo:'https://www.tecconcursos.com.br/questoes/cadernos/96141694',facil:'https://www.tecconcursos.com.br/questoes/cadernos/96141849',dificil:'https://www.tecconcursos.com.br/questoes/cadernos/96145338'}
-];
-
-/* ================== RENDER (grade, distribuição, frentes, fila) ================== */
-var DIAS=['Segunda','Terça','Quarta','Quinta','Sexta'],LABS=['1ª hora','2ª hora','3ª hora'];
-var wk='';
-for(var d=0;d<5;d++){
-  // escada do ciclo: CERTO = frente do dia · Fácil = frente de ontem (D+1) · Difícil+ = frente de anteontem (D+2)
-  var slots=[
-    {f:FRENTES[d],tag:'Certo / Errado',link:'certo',sub:'caderno CERTO'},
-    {f:FRENTES[(d+4)%5],tag:'ABCDE · Fácil',link:'facil',sub:'revisão D+1'+(d===0?' (da sexta)':'')},
-    {f:FRENTES[(d+3)%5],tag:'Difícil + Muito Difícil',link:'dificil',sub:'treino D+2 (viu CERTO anteontem)'}
-  ];
-  wk+='<div class="day" data-day="'+d+'"><div class="day-name">'+DIAS[d]+' <i>3h</i></div>';
-  for(var h=0;h<3;h++){
-    var s=slots[h],id='d'+d+'h'+(h+1);
-    wk+='<span class="hourlab">'+LABS[h]+' <button class="chk" type="button" data-act="'+id+'" aria-label="Marcar como feita">✓</button></span>'
-      +'<a class="act" style="--c:'+s.f.c+';--cbg:'+s.f.cbg+'" href="'+s.f[s.link]+'" target="_blank" data-act="'+id+'" data-hours="1">'
-      +'<span class="go">↗</span><span class="tag">'+s.tag+'</span>'
-      +'<b>'+s.f.nome+'</b><small>Frente '+s.f.id+' · '+s.sub+'</small></a>';
+   juris:JURIS_PH,certo:CAD+'96141657',facil:CAD+'96141801',dificil:CAD+'96145300'},
+  dciv:{nome:'Direito Civil',c:'#d97706',cbg:'#fff7ed',
+   assuntos:'associações · personalidade jurídica · PJ · sociedades · desconsideração inversa · fraude contra credores · erro · dolo · lesão · estado de perigo',
+   juris:JURIS_PH,certo:CAD+'96141364',facil:CAD+'96141808',dificil:CAD+'96145311'},
+  amb:{nome:'Direito Ambiental',c:'#059669',cbg:'#edf9f4',
+   assuntos:'dever do Poder Público · tratados internacionais · responsabilidade por danos · art. 225 · natureza pública da proteção · desenvolvimento sustentável · princípios implícitos · ubiquidade · participação e informação · função socioambiental · usuário-pagador · poluidor-pagador · CONAMA/SISNAMA',
+   juris:JURIS_PH,certo:CAD+'96141654',facil:CAD+'96141760',dificil:CAD+'96145297'},
+  adm:{nome:'Direito Administrativo',c:'#7c3aed',cbg:'#f5f0fe',
+   assuntos:'Administração Direta e Indireta · desconcentração x descentralização · órgãos públicos · controle hierárquico e finalístico · estatais (Lei 13.303/2016) · autarquias · PJ de direito público/privado · vícios dos atos · processo administrativo · abuso de poder · controle formal e de mérito · classificação dos atos',
+   juris:JURIS_PH,certo:CAD+'96141130',facil:CAD+'96141778',dificil:CAD+'96145299'},
+  elei:{nome:'Direito Eleitoral',c:'#e11d48',cbg:'#fdf0f3',
+   assuntos:'pluralismo político · reforma política · partidos · democracia direta · soberania popular · sistema representativo · suspensão de direitos políticos · inalistáveis e inelegíveis · alistamento · voto · sufrágio · Fundo Partidário · ética e fidelidade partidária',
+   juris:JURIS_PH,certo:CAD+'96141649',facil:CAD+'96141757',dificil:CAD+'96145293'},
+  trab:{nome:'Direito do Trabalho',c:'#ea580c',cbg:'#fff3ec',assuntos:'reforma trabalhista (13.467/2017) · natureza e fontes · princípios · relação de trabalho x emprego · subordinação · terceirização · elementos',juris:JURIS_PH,certo:CAD+'96141660',facil:CAD+'96141811',dificil:CAD+'96145312'},
+  ptrab:{nome:'Processo do Trabalho',c:'#0891b2',cbg:'#ecf9fd',assuntos:'partes · princípios · autonomia · ação trabalhista · litisconsórcio · atos e termos · CCP · CPC subsidiário · nulidades · prazos CLT · competência',juris:JURIS_PH,certo:CAD+'96141666',facil:CAD+'96141817',dificil:CAD+'96145314'},
+  dh:{nome:'Direitos Humanos',c:'#c026d3',cbg:'#fdf0fe',assuntos:'racismo estrutural · fundamentos · características · gerações · efetividade · Teoria Crítica · universalismo x relativismo · Viena 1993',juris:JURIS_PH,certo:CAD+'96141684',facil:CAD+'96141821',dificil:CAD+'96145318'},
+  prev:{nome:'Direito Previdenciário',c:'#2563eb',cbg:'#eef2fe',assuntos:'benefícios do RGPS · Previdência na CF · segurados · princípios · regimes · carência · prescrição e decadência',juris:JURIS_PH,certo:CAD+'96141686',facil:CAD+'96141837',dificil:CAD+'96145322'},
+  mp:{nome:'Ministério Público',c:'#b91c1c',cbg:'#fdf0f0',assuntos:'princípios institucionais · organização · garantias e vedações · funções · CNMP · Conselho Superior do MPU · LC 75/1993',juris:JURIS_PH,certo:CAD+'96141689',facil:CAD+'96141839',dificil:CAD+'96145327'},
+  ppen:{nome:'Processo Penal',c:'#475569',cbg:'#eef1f5',assuntos:'inquérito policial (conceito, prazos, diligências, arquivamento, sigilo, valor probatório) · polícia judiciária · ação penal · queixa-crime',juris:JURIS_PH,certo:CAD+'96141692',facil:CAD+'96141844',dificil:CAD+'96145330'},
+  pen:{nome:'Direito Penal',c:'#374151',cbg:'#eef0f3',assuntos:'lei penal no tempo e espaço · retroatividade · extraterritorialidade · imunidades · erro de tipo · tentativa · iter criminis · culpa · causalidade',juris:JURIS_PH,certo:CAD+'96141520',facil:CAD+'96141845',dificil:CAD+'96145332'},
+  port:{nome:'Língua Portuguesa',c:'#0284c7',cbg:'#eaf6fd',assuntos:'tipos e gêneros textuais · inferências · coesão · estrutura · leitura literal x inferencial · modos de organização · texto informativo',juris:JURIS_PH,certo:CAD+'96140367',facil:CAD+'96141746',dificil:CAD+'96145336'},
+  admg:{nome:'Administração Geral e Pública',c:'#65a30d',cbg:'#f3f9e8',assuntos:'papéis gerenciais (Mintzberg) · qualidade · efetividade · eficiência · planejamento operacional e estratégico · funções administrativas · competências',juris:JURIS_PH,certo:CAD+'96141694',facil:CAD+'96141849',dificil:CAD+'96145338'}
+};
+// ordem padrão (sua regra): 6 do ciclo, depois a fila
+var ORDEM_DEFAULT=['constituc','pciv','dciv','amb','adm','elei','trab','ptrab','dh','prev','mp','ppen','pen','port','admg'];
+var CYCLEN=6,OKEY='ordem-v1',ordem=ORDEM_DEFAULT.slice();
+try{ // restaura a ordem (com rotações já feitas), garantindo as 15 matérias sem duplicar
+  var _o=JSON.parse(localStorage.getItem(OKEY)||'null');
+  if(_o&&_o.length){
+    var seen={},clean=[];
+    _o.forEach(function(id){if(MAT[id]&&!seen[id]){seen[id]=1;clean.push(id);}});
+    ORDEM_DEFAULT.forEach(function(id){if(!seen[id]){seen[id]=1;clean.push(id);}});
+    if(clean.length===ORDEM_DEFAULT.length)ordem=clean;
   }
-  wk+='</div>';
+}catch(e){}
+function osave(){try{localStorage.setItem(OKEY,JSON.stringify(ordem))}catch(e){}}
+function cycList(){return ordem.slice(0,CYCLEN);}
+function filaList(){return ordem.slice(CYCLEN);}
+
+/* ================== RENDER ================== */
+function nn(n){return n<10?'0'+n:''+n}
+function renderAll(){
+  var cyc='';
+  cycList().forEach(function(id,idx){
+    var m=MAT[id],pos=idx+1;
+    function block(suf,etapa,tag,href,b,sub){
+      var act=id+'-'+suf;
+      return '<span class="hourlab">'+etapa+' <button class="chk" type="button" data-act="'+act+'" aria-label="Marcar como feita">✓</button></span>'
+        +'<a class="act" style="--c:'+m.c+';--cbg:'+m.cbg+'" href="'+href+'" target="_blank" data-act="'+act+'" data-blk="1">'
+        +'<span class="go">↗</span><span class="tag">'+tag+'</span><b>'+b+'</b><small>'+sub+'</small></a>';
+    }
+    cyc+='<div class="day cyc" data-id="'+id+'" style="--c:'+m.c+';--cbg:'+m.cbg+'">'
+      +'<div class="day-name"><span class="cycnum">'+nn(pos)+'</span>'+m.nome+'</div>'
+      +block('j','Jurisprudência','Todo dia',m.juris,'Jurisprudência','informativos e súmulas em questões')
+      +block('c','Certas','Certo / Errado',m.certo,'Caderno CERTO','1ª passada · responda certo/errado')
+      +block('a','ABCDE fácil','ABCDE · fácil',m.facil,'Muito fáceis + fáceis','2ª passada · logo após as certas')
+      +'<span class="hourlab dif-lab">Difícil+ · a cada 15 dias</span>'
+      +'<a class="act dif" style="--c:'+m.c+';--cbg:'+m.cbg+'" href="'+m.dificil+'" target="_blank">'
+      +'<span class="go">↗</span><span class="tag">Difícil + Muito Difícil</span><b>Quinzenal</b><small>roda na virada dos 15 dias</small></a>'
+      +'<button class="trocar" type="button" data-id="'+id+'">✓ Concluída · trocar pela próxima da fila →</button>'
+      +'</div>';
+  });
+  document.getElementById('cycgrid').innerHTML=cyc;
+
+  document.getElementById('fgrid').innerHTML=cycList().map(function(id,idx){
+    var m=MAT[id];
+    return '<div class="fcard" style="--c:'+m.c+'"><div class="ft"><div class="av">'+nn(idx+1)+'</div><h4>'+m.nome+'</h4><span class="fr">ciclo '+(idx+1)+'/6</span></div><p>'+m.assuntos+'</p>'
+    +'<div class="btns"><a class="btn juris" href="'+m.juris+'" target="_blank">Jurisprudência ↗</a><a class="btn solid" href="'+m.certo+'" target="_blank">Certas ↗</a><a class="btn" href="'+m.facil+'" target="_blank">ABCDE fácil ↗</a><a class="btn hard" href="'+m.dificil+'" target="_blank">Difícil+ ↗</a></div></div>';
+  }).join('');
+
+  document.getElementById('queue').innerHTML=filaList().map(function(id,idx){
+    var q=MAT[id],nx=idx===0?'<span class="qnext">próxima a entrar</span>':'';
+    return '<div class="qitem'+(idx===0?' next':'')+'" style="--c:'+q.c+'"><div class="qn">'+(idx+1)+'</div><div><b>'+q.nome+nx+'</b><small>'+q.assuntos+'</small></div>'
+    +'<div class="qlinks"><a href="'+q.certo+'" target="_blank">CERTO</a><a href="'+q.facil+'" target="_blank">ABCDE</a><a class="hardq" href="'+q.dificil+'" target="_blank">Difícil+</a></div></div>';
+  }).join('');
 }
-document.getElementById('sat').insertAdjacentHTML('beforebegin',wk);
+renderAll();
 
-document.getElementById('dist').innerHTML=FRENTES.map(function(f){
-  return '<div class="bar-row"><div class="bar-lab"><span class="dot" style="background:'+f.c+'"></span>Frente '+f.id+' — '+f.nome+'</div><div class="bar-h">3h</div><div class="bar-track"><div class="bar-fill" style="width:16.7%;background-color:'+f.c+'"></div></div></div>';
-}).join('')
-+'<div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#b91c1c"></span>Erradas da semana (sábado, 1ª e 2ª horas)</div><div class="bar-h">2h</div><div class="bar-track"><div class="bar-fill" style="width:11.1%;background-color:#b71c1c"></div></div></div>'
-+'<div class="bar-row"><div class="bar-lab"><span class="dot" style="background:#1a1a2e"></span>Difícil+ da melhor frente (sábado, 3ª hora)</div><div class="bar-h">1h</div><div class="bar-track"><div class="bar-fill" style="width:5.6%;background-color:#1a1a2e"></div></div></div>';
-
-document.getElementById('fgrid').innerHTML=FRENTES.map(function(f){
-  return '<div class="fcard" style="--c:'+f.c+'"><div class="ft"><div class="av">'+f.id+'</div><h4>'+f.nome+'</h4><span class="fr">'+f.dias+'</span></div><p>'+f.assuntos+'</p>'
-  +'<div class="btns"><a class="btn solid" href="'+f.certo+'" target="_blank">CERTO ↗</a><a class="btn" href="'+f.facil+'" target="_blank">ABCDE Fácil ↗</a><a class="btn hard" href="'+f.dificil+'" target="_blank">Difícil+ ↗</a></div></div>';
-}).join('');
-
-document.getElementById('queue').innerHTML=FILA.map(function(q){
-  return '<div class="qitem" style="--c:'+q.c+'"><div class="qn">'+q.n+'</div><div><b>'+q.nome+'</b><small>'+q.assuntos+'</small></div>'
-  +'<div class="qlinks"><a href="'+q.certo+'" target="_blank">CERTO</a><a href="'+q.facil+'" target="_blank">ABCDE</a><a class="hardq" href="'+q.dificil+'" target="_blank">Difícil+</a></div></div>';
-}).join('');
-
-/* ================== DIA ATUAL ================== */
-var dow=new Date().getDay(); // 0=dom · 6=sáb → destacam o card de sábado/descanso
-var hoje=(dow>=1&&dow<=5)?document.querySelector('.day[data-day="'+(dow-1)+'"]'):document.getElementById('sat');
-if(hoje){
-  hoje.classList.add('today');
-  var dn=hoje.querySelector('.day-name'),em=document.createElement('em');
-  em.className='hoje';em.textContent='hoje';
-  dn.insertBefore(em,dn.querySelector('i'));
-}
-
-/* ================== CHECKLIST SEMANAL (localStorage) ================== */
+/* ================== CHECKLIST (localStorage) ================== */
 function isoWeekKey(dt){
   var dd=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate());
   dd.setDate(dd.getDate()-((dd.getDay()+6)%7)+3); // quinta-feira da semana ISO
@@ -410,22 +471,44 @@ try{ // virada de semana: chave nova começa vazia; mantém só a atual + 8 ante
   var keep={},pd=new Date();
   for(var i=0;i<9;i++){keep['done-'+isoWeekKey(pd)]=1;pd.setDate(pd.getDate()-7);}
   var rm=[];
-  for(var j=0;j<localStorage.length;j++){var k=localStorage.key(j);if(/^done-\d{4}-W\d{2}$/.test(k)&&!keep[k])rm.push(k);}
+  for(var j=0;j<localStorage.length;j++){var key=localStorage.key(j);if(/^done-\d{4}-W\d{2}$/.test(key)&&!keep[key])rm.push(key);}
   rm.forEach(function(x){localStorage.removeItem(x);});
 }catch(e){}
 var doneMap={};
 try{doneMap=JSON.parse(localStorage.getItem(DKEY)||'{}')||{}}catch(e){}
+function markAgora(){
+  document.querySelectorAll('.day.today').forEach(function(c){c.classList.remove('today')});
+  document.querySelectorAll('.agbadge').forEach(function(b){b.remove()});
+  var dow=new Date().getDay(),target=null;
+  if(dow===6||dow===0){target=document.getElementById('sat');}
+  else{
+    var cards=document.querySelectorAll('.cyc');
+    for(var i=0;i<cards.length;i++){
+      var acts=cards[i].querySelectorAll('.act[data-act]'),todoDone=true;
+      acts.forEach(function(a){if(!doneMap[a.dataset.act])todoDone=false;});
+      if(!todoDone){target=cards[i];break;}
+    }
+  }
+  if(target){
+    target.classList.add('today');
+    var dn=target.querySelector('.day-name'),em=document.createElement('em');
+    em.className='agbadge';em.textContent=(target.id==='sat')?'hoje':'agora';
+    dn.appendChild(em);
+  }
+}
 function refreshChecks(){
   document.querySelectorAll('.chk').forEach(function(c){c.classList.toggle('on',!!doneMap[c.dataset.act])});
   var tot=0,feito=0;
   document.querySelectorAll('.act[data-act]').forEach(function(a){
-    var hh=parseFloat(a.dataset.hours||'1');tot+=hh;
-    var on=!!doneMap[a.dataset.act];
-    a.classList.toggle('done',on);
-    if(on)feito+=hh;
+    tot++;var on=!!doneMap[a.dataset.act];a.classList.toggle('done',on);if(on)feito++;
   });
-  document.getElementById('wkprog-lab').textContent=feito+'h de '+tot+'h concluídas';
+  document.getElementById('wkprog-lab').textContent=feito+' de '+tot+' blocos';
   document.getElementById('wkprog-fill').style.width=(tot?Math.round(feito/tot*100):0)+'%';
+  document.querySelectorAll('.cyc').forEach(function(c){ // matéria com os 3 blocos feitos libera a troca
+    var ok=true;c.querySelectorAll('.act[data-act]').forEach(function(a){if(!doneMap[a.dataset.act])ok=false;});
+    c.classList.toggle('complete',ok);
+  });
+  markAgora();
 }
 document.addEventListener('click',function(e){
   var c=e.target.closest('.chk');if(!c)return;
@@ -434,6 +517,19 @@ document.addEventListener('click',function(e){
   if(doneMap[act])delete doneMap[act];else doneMap[act]=1;
   try{localStorage.setItem(DKEY,JSON.stringify(doneMap))}catch(err){}
   refreshChecks();
+});
+// trocar matéria do ciclo após concluí-la → ela vai pro fim da fila, a próxima entra
+document.addEventListener('click',function(e){
+  var t=e.target.closest('.trocar');if(!t)return;
+  var id=t.dataset.id,ok=true;
+  ['-j','-c','-a'].forEach(function(s){if(!doneMap[id+s])ok=false;});
+  if(!ok)return; // só troca com os 3 blocos feitos
+  var prox=filaList()[0];
+  if(!confirm('Concluir "'+MAT[id].nome+'" e trazer "'+MAT[prox].nome+'" para o ciclo?\n\n"'+MAT[id].nome+'" volta para o fim da fila de rotação.'))return;
+  ordem=ordem.filter(function(x){return x!==id;});ordem.push(id);osave();
+  ['-j','-c','-a'].forEach(function(s){delete doneMap[id+s];}); // sai zerada para a próxima rodada
+  try{localStorage.setItem(DKEY,JSON.stringify(doneMap))}catch(err){}
+  renderAll();refreshChecks();
 });
 refreshChecks();
 
@@ -447,7 +543,7 @@ function beep(){audio();if(!actx)return;var n=0;var f=function(){if(n++>5)return
 function pedirNotif(){try{if(window.Notification&&Notification.permission==='default')Notification.requestPermission()}catch(e){}}
 function notificar(){try{if(window.Notification&&Notification.permission==='granted')new Notification('⏰ Tempo esgotado!',{body:'Bloco concluído — hora de trocar de atividade.'})}catch(e){}}
 function fmt(s){var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x}
-function draw(){disp.textContent=fmt(left);ring.style.strokeDashoffset=C*(1-left/total);document.title=run?('('+fmt(left)+') Plano de Estudos'):(left<=0?'⏰ Tempo esgotado! · Plano de Estudos':'Plano de Estudos · Lana Biatriz · Ciclo em Blocos')}
+function draw(){disp.textContent=fmt(left);ring.style.strokeDashoffset=C*(1-left/total);document.title=run?('('+fmt(left)+') Ciclo de Questões'):(left<=0?'⏰ Tempo esgotado! · Ciclo de Questões':'Ciclo de Questões · Lana Biatriz')}
 function tsave(){try{localStorage.setItem(TKEY,JSON.stringify({total:total,left:left,target:target,running:!!run}))}catch(e){}}
 function fim(){clearInterval(run);run=null;left=0;go.textContent='Iniciar';disp.style.color='#b91c1c';draw();tsave();beep();notificar()}
 function tick(){left=Math.max(0,Math.ceil((target-Date.now())/1000));if(left<=0){fim();return}draw()}
@@ -519,6 +615,17 @@ c6add.onclick=function(){
 };
 document.getElementById('c6rst').onclick=function(){c6st={fase:'certo',n:0,flip:false};c6save();c6draw()};
 c6draw();
+
+/* ================== TROCAR LAYOUT (5 temas · persiste) ================== */
+var THKEY='theme-v1',THEMES=['papel','menta','coral','ceu','uva'];
+function setTheme(t){
+  if(THEMES.indexOf(t)<0)t='papel';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THKEY,t)}catch(e){}
+  document.querySelectorAll('.swatch').forEach(function(s){s.classList.toggle('on',s.dataset.theme===t)});
+}
+document.querySelectorAll('.swatch').forEach(function(s){s.onclick=function(){setTheme(s.dataset.theme)}});
+setTheme(document.documentElement.getAttribute('data-theme')||'papel'); // normaliza + marca o ativo
 })();
 </script>
 
