@@ -3,9 +3,19 @@
 <html lang="pt-BR" data-theme="papel">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ciclo de Questões · Lana Biatriz</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="6" y="6" width="80" height="80" rx="21" fill="%23ffd43b" stroke="%2317151f" stroke-width="5"/><g transform="translate(46,47)"><circle cx="0" cy="0" r="22" fill="none" stroke="%2317151f" stroke-width="9" stroke-linecap="round" stroke-dasharray="104 35" transform="rotate(-52)"/><path d="M 19 -18 L 31 -9 L 16 -2 Z" fill="%2317151f"/><path d="M -11 1 L -3 9 L 13 -10" fill="none" stroke="%234f46e5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g></svg>'>
+<!-- ===== App na Tela de Início do iPad (Adicionar à Tela de Início) ===== -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ciclo">
+<meta name="application-name" content="Ciclo de Questões">
+<meta name="theme-color" content="#f3efe5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14131a" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -22,9 +32,45 @@ html[data-theme="menta"]{--bg:#ecf5f0;--accent:#0f766e;--soft:#d7f0ea;--hl:#fde0
 html[data-theme="coral"]{--bg:#fbf0ee;--accent:#e11d48;--soft:#fde4e7;--hl:#fdba74}
 html[data-theme="ceu"]{--bg:#eef2fb;--accent:#2563eb;--soft:#dbe6fd;--hl:#fde047}
 html[data-theme="uva"]{--bg:#f4eefb;--accent:#7c3aed;--soft:#ece2fb;--hl:#fde047}
+/* ---------- aparência escura (modo escuro) ---------- */
+html[data-theme="escuro"]{
+  --bg:#14131a; --card:#211f2b; --ink:#efe9da; --mut:#a39fb0; --line:#efe9da;
+  --accent:#7c74f7; --soft:#2a2740; --hl:#ffd43b; --stamp:#fb7185;
+}
+/* texto/ícones que ficavam claros sobre fundos claros (amarelo, pastel) */
+html[data-theme="escuro"] body{background-image:radial-gradient(rgba(239,233,218,.05) 1px,transparent 1.5px)}
+html[data-theme="escuro"] ::selection{color:#14131a}
+html[data-theme="escuro"] h1 em,
+html[data-theme="escuro"] .swatch.on,
+html[data-theme="escuro"] .cycnum,
+html[data-theme="escuro"] .day-name .agbadge,
+html[data-theme="escuro"] .tot div,html[data-theme="escuro"] .tot span,
+html[data-theme="escuro"] #tmin{color:#14131a}
+/* fundos que usavam var(--ink) (agora claro) precisam voltar a ser escuros */
+html[data-theme="escuro"] .tape{background:#0e0d12}
+html[data-theme="escuro"] .day-name{background:#2f2c3d;color:#fff}
+html[data-theme="escuro"] .dom .day-name{background:#3a3947}
+html[data-theme="escuro"] .sat.today .day-name{background:#4f46e5}
+html[data-theme="escuro"] .rulebar{background:#1b1a23}
+html[data-theme="escuro"] .prio .n,
+html[data-theme="escuro"] .tp.sel{background:#2f2c3d}
+/* cartões de atividade continuam claros (pastel) — fixa o texto interno em escuro */
+html[data-theme="escuro"] .act b{color:#14131a}
+html[data-theme="escuro"] .act small{color:#4a4756}
+html[data-theme="escuro"] .act .go{background:#fff}
+html[data-theme="escuro"] .cad-row+.cad-row,
+html[data-theme="escuro"] .c6box{border-color:#3a3947}
+/* sombras "neobrutalistas" agora claras p/ aparecer sobre o fundo escuro */
+html[data-theme="escuro"] .day,
+html[data-theme="escuro"] .card,
+html[data-theme="escuro"] .fcard{box-shadow:5px 5px 0 var(--ink)}
+html[data-theme="escuro"] .qitem{box-shadow:4px 4px 0 var(--ink)}
+html[data-theme="escuro"] .chk{box-shadow:2px 2px 0 var(--ink)}
+html[data-theme="escuro"] #tmr{box-shadow:7px 7px 0 var(--ink)}
+html[data-theme="escuro"] .rulebar{box-shadow:6px 6px 0 rgba(239,233,218,.18)}
 *{box-sizing:border-box;margin:0;padding:0}
 ::selection{background:var(--hl);color:var(--ink)}
-body{font-family:var(--body);background:var(--bg);background-image:radial-gradient(rgba(23,21,31,.07) 1px,transparent 1.5px);background-size:22px 22px;color:var(--ink);line-height:1.5;padding:0 0 90px;counter-reset:sec}
+body{font-family:var(--body);background:var(--bg);background-image:radial-gradient(rgba(23,21,31,.07) 1px,transparent 1.5px);background-size:22px 22px;color:var(--ink);line-height:1.5;padding:env(safe-area-inset-top) env(safe-area-inset-right) 90px env(safe-area-inset-left);counter-reset:sec}
 .wrap{max-width:1120px;margin:0 auto;padding:36px 20px 0}
 a{color:inherit;text-decoration:none}
 /* ---------- fita marquee ---------- */
@@ -161,7 +207,7 @@ h2::before{content:counter(sec,decimal-leading-zero);font:700 13px var(--mono);c
 footer{margin-top:72px;text-align:center;color:var(--mut);font-size:13px}
 footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--stamp);border:3px double var(--stamp);border-radius:8px;padding:12px 20px;transform:rotate(-2.5deg);margin-bottom:14px}
 /* ---------- timer ---------- */
-#tmr{position:fixed;right:22px;bottom:22px;z-index:99;width:248px;background:var(--card);border:2px solid var(--ink);border-radius:14px;box-shadow:7px 7px 0 rgba(23,21,31,.85);padding:16px;font-family:var(--body)}
+#tmr{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));z-index:99;width:248px;background:var(--card);border:2px solid var(--ink);border-radius:14px;box-shadow:7px 7px 0 rgba(23,21,31,.85);padding:16px;font-family:var(--body)}
 #tmr.min{width:152px}
 #tmr.min #tbody{display:none}
 .thead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -230,6 +276,7 @@ footer b{display:inline-block;font-family:var(--disp);font-weight:400;font-size:
     <button class="swatch" type="button" data-theme="coral"><span class="dt"><i style="background:#e11d48"></i><i style="background:#fdba74"></i></span>Coral</button>
     <button class="swatch" type="button" data-theme="ceu"><span class="dt"><i style="background:#2563eb"></i><i style="background:#fde047"></i></span>Céu</button>
     <button class="swatch" type="button" data-theme="uva"><span class="dt"><i style="background:#7c3aed"></i><i style="background:#fde047"></i></span>Uva</button>
+    <button class="swatch" type="button" data-theme="escuro"><span class="dt"><i style="background:#14131a"></i><i style="background:#ffd43b"></i></span>Escuro</button>
   </div>
   <div class="wkprog">
     <div class="wkprog-top"><span>Progresso do ciclo</span><b id="wkprog-lab">0 de 0 blocos</b></div>
@@ -617,7 +664,7 @@ document.getElementById('c6rst').onclick=function(){c6st={fase:'certo',n:0,flip:
 c6draw();
 
 /* ================== TROCAR LAYOUT (5 temas · persiste) ================== */
-var THKEY='theme-v1',THEMES=['papel','menta','coral','ceu','uva'];
+var THKEY='theme-v1',THEMES=['papel','menta','coral','ceu','uva','escuro'];
 function setTheme(t){
   if(THEMES.indexOf(t)<0)t='papel';
   document.documentElement.setAttribute('data-theme',t);

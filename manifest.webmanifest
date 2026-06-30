@@ -1,0 +1,17 @@
+{
+  "name": "Ciclo de Questões · Lana Biatriz",
+  "short_name": "Ciclo",
+  "description": "Plano de estudos por ciclo de questões — resolva, marque e acompanhe o progresso.",
+  "lang": "pt-BR",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f3efe5",
+  "theme_color": "#f3efe5",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}
